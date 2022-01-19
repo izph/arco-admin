@@ -14,7 +14,7 @@ import axios from 'axios';
 import styles from './style/index.module.less';
 
 export default function LoginForm() {
-  const formRef = useRef<FormInstance>();
+  const formRef = useRef<FormInstance>(); // FormInstance 获取表单实例
   const [errorMessage, setErrorMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const [rememberPassword, setRememberPassword] = useState(false);
@@ -34,11 +34,13 @@ export default function LoginForm() {
 
   function login(params) {
     setErrorMessage('');
-    setLoading(true);
+    setLoading(true); // 登录按钮的加载状态
     axios
       .post('/api/user/login', params)
       .then((res) => {
         const { status, msg } = res.data;
+        console.log(res);
+        debugger;
         if (status === 'ok') {
           afterLoginSuccess(params);
         } else {
@@ -52,6 +54,7 @@ export default function LoginForm() {
 
   function onSubmitClick() {
     formRef.current.validate().then((values) => {
+      console.log(values); // {username:"admin", password:"admin"}
       login(values);
     });
   }
@@ -66,7 +69,7 @@ export default function LoginForm() {
       formRef.current.setFieldsValue(parseParams);
     }
   }, []);
-
+  // onPressEnter按下回车时的回调
   return (
     <div className={styles['login-form-wrapper']}>
       <div className={styles['login-form-title']}>登录 Arco Design Pro</div>

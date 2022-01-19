@@ -1,34 +1,34 @@
-export const defaultRoute = 'dashboard/workplace';
+export const defaultRoute = 'list/search-table';
 
 export const routes = [
-  {
-    name: 'menu.dashboard',
-    key: 'dashboard',
-    children: [
-      {
-        name: 'menu.dashboard.workplace',
-        key: 'dashboard/workplace',
-      },
-      {
-        name: 'menu.dashboard.monitor',
-        key: 'dashboard/monitor',
-      },
-    ],
-  },
-  {
-    name: 'menu.visualization',
-    key: 'visualization',
-    children: [
-      {
-        name: 'menu.visualization.dataAnalysis',
-        key: 'visualization/data-analysis',
-      },
-      {
-        name: 'menu.visualization.multiDimensionDataAnalysis',
-        key: 'visualization/multi-dimension-data-analysis',
-      },
-    ],
-  },
+  // {
+  //   name: 'menu.dashboard',
+  //   key: 'dashboard',
+  //   children: [
+  //     {
+  //       name: 'menu.dashboard.workplace',
+  //       key: 'dashboard/workplace',
+  //     },
+  //     {
+  //       name: 'menu.dashboard.monitor',
+  //       key: 'dashboard/monitor',
+  //     },
+  //   ],
+  // },
+  // {
+  //   name: 'menu.visualization',
+  //   key: 'visualization',
+  //   children: [
+  //     {
+  //       name: 'menu.visualization.dataAnalysis',
+  //       key: 'visualization/data-analysis',
+  //     },
+  //     {
+  //       name: 'menu.visualization.multiDimensionDataAnalysis',
+  //       key: 'visualization/multi-dimension-data-analysis',
+  //     },
+  //   ],
+  // },
   {
     name: 'menu.list',
     key: 'list',
@@ -114,6 +114,20 @@ export const routes = [
         name: 'menu.user.setting',
         key: 'user/setting',
       },
+    ],
+  },
+  {
+    name: 'menu.map',
+    key: 'map',
+    children: [
+      {
+        name: 'menu.map.arcgis',
+        key: 'map/arcgis-map',
+      },
+      {
+        name: 'menu.map.sky',
+        key: 'map/sky-map',
+      }
     ],
   },
 ];

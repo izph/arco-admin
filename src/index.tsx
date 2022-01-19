@@ -16,6 +16,8 @@ import checkLogin from './utils/checkLogin';
 import storage from './utils/storage';
 import './mock';
 
+import "@arcgis/core/assets/esri/themes/light/main.css";
+
 const store = createStore(rootReducer);
 
 function Index() {
@@ -49,16 +51,16 @@ function Index() {
       window.location.href = '/login';
     }
   }, []);
-
+  // lang发生变化时修改 LocalStorage的arco-lang值
   useEffect(() => {
     storage.setItem('arco-lang', lang);
   }, [lang]);
-
+  // 全局context多语
   const contextValue = {
     lang,
     setLang,
   };
-
+  // ConfigProvider 设置多语
   return (
     <BrowserRouter>
       <ConfigProvider

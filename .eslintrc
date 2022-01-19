@@ -26,9 +26,14 @@
       "version": "16.8"
     }
   },
-  "plugins": ["react", "babel", "@typescript-eslint/eslint-plugin"],
+  "plugins": [
+    "react",
+    "babel",
+    "@typescript-eslint/eslint-plugin"
+  ],
   "rules": {
     "react/display-name": 0,
-    "react/prop-types": 0
+    "react/prop-types": 0,
+    "@typescript-eslint/no-loss-of-precision": 0
   }
 }

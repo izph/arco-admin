@@ -42,6 +42,7 @@ function Navbar() {
 
   const { setLang } = useContext(GlobalContext);
 
+  // 用户退出
   function logout() {
     storage.setItem('userStatus', 'logout');
     window.location.href = '/login';

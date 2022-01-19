@@ -10,6 +10,7 @@ import {
   IconCheckCircle,
   IconExclamationCircle,
   IconUser,
+  IconCommon,
   IconMenuFold,
   IconMenuUnfold,
 } from '@arco-design/web-react/icon';
@@ -32,6 +33,7 @@ const SubMenu = Menu.SubMenu;
 const Sider = Layout.Sider;
 const Content = Layout.Content;
 
+// 获取不同的图标
 function getIconFromKey(key) {
   switch (key) {
     case 'dashboard':
@@ -50,6 +52,8 @@ function getIconFromKey(key) {
       return <IconExclamationCircle className={styles.icon} />;
     case 'user':
       return <IconUser className={styles.icon} />;
+    case 'map':
+      return <IconCommon className={styles.icon} />;
     default:
       return <div className={styles['icon-empty']} />;
   }
@@ -68,35 +72,35 @@ function getFlattenRoutes() {
     });
   }
   travel(routes);
+  // console.log(res);
   return res;
 }
 
 function PageLayout() {
-  const urlParams = getUrlParams();
+  const urlParams = getUrlParams(); // {}
   const history = useHistory();
-  const pathname = history.location.pathname;
-  const currentComponent = qs.parseUrl(pathname).url.slice(1);
+  const pathname = history.location.pathname; // url的路径
+  const currentComponent = qs.parseUrl(pathname).url.slice(1); // location.search: 'result/success'
   const defaultSelectedKeys = [currentComponent || defaultRoute];
-  const paths = (currentComponent || defaultRoute).split('/');
-  const defaultOpenKeys = paths.slice(0, paths.length - 1);
+  const paths = (currentComponent || defaultRoute).split('/'); // ['result', 'success']
+  const defaultOpenKeys = paths.slice(0, paths.length - 1);// ['result', 'success']
 
-  const locale = useLocale();
-  const settings = useSelector((state: GlobalState) => state.settings);
-
-  const [breadcrumb, setBreadCrumb] = useState([]);
-  const [collapsed, setCollapsed] = useState<boolean>(false);
-  const [selectedKeys, setSelectedKeys] =
-    useState<string[]>(defaultSelectedKeys);
-
-  const routeMap = useRef<Map<string, React.ReactNode[]>>(new Map());
-
+  const locale = useLocale(); // i18n对象
+  const settings = useSelector((state: GlobalState) => state.settings); // settings.json
+  const [breadcrumb, setBreadCrumb] = useState([]);  // 面包屑
+  const [collapsed, setCollapsed] = useState<boolean>(false); // 折叠
+  const [selectedKeys, setSelectedKeys] = useState<string[]>(defaultSelectedKeys);  // 选中的导航key: ['result/success']
+  const routeMap = useRef<Map<string, React.ReactNode[]>>(new Map()); // 路由哈希
+  // nav高度
   const navbarHeight = 60;
+  // Menu折叠时的宽度
   const menuWidth = collapsed ? 48 : settings.menuWidth;
 
-  const showNavbar = settings.navbar && urlParams.navbar !== false;
+  const showNavbar = settings.navbar && urlParams.navbar !== false; // boolean
   const showMenu = settings.menu && urlParams.menu !== false;
   const showFooter = settings.footer && urlParams.footer !== false;
 
+  // [{component: {…}, key: "list/search-table", name: "menu.list.searchTable"}, ...]
   const flattenRoutes = useMemo(() => getFlattenRoutes() || [], []);
 
   function renderRoutes(locale) {
@@ -153,16 +157,16 @@ function PageLayout() {
     travel(routes, 1);
     return nodes;
   }
-
+  // 点击左边菜单
   function onClickMenuItem(key) {
     const currentRoute = flattenRoutes.find((r) => r.key === key);
     const component = currentRoute.component;
     const preload = component.preload();
-    NProgress.start();
+    NProgress.start(); // 渲染进度条
     preload.then(() => {
       setSelectedKeys([key]);
       history.push(currentRoute.path ? currentRoute.path : `/${key}`);
-      NProgress.done();
+      NProgress.done(); // 完成进度条
     });
   }
 
@@ -174,6 +178,7 @@ function PageLayout() {
   const paddingTop = showNavbar ? { paddingTop: navbarHeight } : {};
   const paddingStyle = { ...paddingLeft, ...paddingTop };
 
+  // 更新面包屑
   useEffect(() => {
     const routeConfig = routeMap.current.get(pathname);
     setBreadCrumb(routeConfig || []);
@@ -215,6 +220,7 @@ function PageLayout() {
         )}
         <Layout className={styles['layout-content']} style={paddingStyle}>
           <div className={styles['layout-content-wrapper']}>
+            {/* !!breadcrumb.length转化成布尔值 */}
             {!!breadcrumb.length && (
               <div className={styles['layout-breadcrumb']}>
                 <Breadcrumb>
