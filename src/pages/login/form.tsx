@@ -40,7 +40,7 @@ export default function LoginForm() {
       .then((res) => {
         const { status, msg } = res.data;
         console.log(res);
-        debugger;
+
         if (status === 'ok') {
           afterLoginSuccess(params);
         } else {
@@ -72,8 +72,8 @@ export default function LoginForm() {
   // onPressEnter按下回车时的回调
   return (
     <div className={styles['login-form-wrapper']}>
-      <div className={styles['login-form-title']}>登录 Arco Design Pro</div>
-      <div className={styles['login-form-sub-title']}>登录 Arco Design Pro</div>
+      {/* <div className={styles['login-form-title']}>登录 Arco Design Pro</div> */}
+      <div className={styles['login-form-sub-title']}>arco-admin 登录页</div>
       <div className={styles['login-form-error-msg']}>{errorMessage}</div>
       <Form
         className={styles['login-form']}
