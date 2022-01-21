@@ -1,34 +1,6 @@
 export const defaultRoute = 'list/search-table';
 
 export const routes = [
-  // {
-  //   name: 'menu.dashboard',
-  //   key: 'dashboard',
-  //   children: [
-  //     {
-  //       name: 'menu.dashboard.workplace',
-  //       key: 'dashboard/workplace',
-  //     },
-  //     {
-  //       name: 'menu.dashboard.monitor',
-  //       key: 'dashboard/monitor',
-  //     },
-  //   ],
-  // },
-  // {
-  //   name: 'menu.visualization',
-  //   key: 'visualization',
-  //   children: [
-  //     {
-  //       name: 'menu.visualization.dataAnalysis',
-  //       key: 'visualization/data-analysis',
-  //     },
-  //     {
-  //       name: 'menu.visualization.multiDimensionDataAnalysis',
-  //       key: 'visualization/multi-dimension-data-analysis',
-  //     },
-  //   ],
-  // },
   {
     name: 'menu.list',
     key: 'list',
@@ -43,31 +15,6 @@ export const routes = [
       },
     ],
   },
-  {
-    name: 'menu.form',
-    key: 'form',
-    children: [
-      {
-        name: 'menu.form.group',
-        key: 'form/group',
-      },
-      {
-        name: 'menu.form.step',
-        key: 'form/step',
-      },
-    ],
-  },
-  {
-    name: 'menu.profile',
-    key: 'profile',
-    children: [
-      {
-        name: 'menu.profile.basic',
-        key: 'profile/basic',
-      },
-    ],
-  },
-
   {
     name: 'menu.result',
     key: 'result',

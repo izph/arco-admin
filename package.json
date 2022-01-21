@@ -12,14 +12,11 @@
     "lint": "npm run eslint && npm run stylelint"
   },
   "dependencies": {
-    "@antv/data-set": "^0.11.8",
     "@arcgis/core": "^4.22.2",
     "@arco-design/color": "^0.4.0",
     "@arco-design/web-react": ">=2.0.0",
     "@loadable/component": "^5.13.2",
-    "@turf/turf": "^6.5.0",
     "axios": "^0.24.0",
-    "bizcharts": "^4.1.11",
     "classnames": "^2.3.1",
     "copy-to-clipboard": "^3.3.1",
     "lodash": "^4.17.21",
